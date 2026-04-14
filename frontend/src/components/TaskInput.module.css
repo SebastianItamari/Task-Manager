@@ -1,0 +1,66 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1.35rem;
+  background:
+    linear-gradient(180deg, rgba(31, 31, 31, 0.96), rgba(24, 24, 24, 0.94)),
+    radial-gradient(circle at bottom right, rgba(255, 153, 102, 0.12), transparent 28%);
+}
+
+.inputRow {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+}
+
+.label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #909090;
+}
+
+.input {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  color: #f1f1f1;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.input::placeholder {
+  color: #777;
+}
+
+.input:focus {
+  outline: none;
+  border-color: rgba(141, 240, 168, 0.5);
+  box-shadow: 0 0 0 4px rgba(141, 240, 168, 0.1);
+}
+
+.button {
+  min-width: 144px;
+  padding: 0.9rem 1.25rem;
+  border: 0;
+  border-radius: 1rem;
+  background: #5bc96f;
+  color: #132117;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(91, 201, 111, 0.24);
+}
+
+@media (max-width: 680px) {
+  .inputRow {
+    flex-direction: column;
+  }
+}

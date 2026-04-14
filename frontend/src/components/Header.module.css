@@ -1,0 +1,85 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  justify-content: space-between;
+  padding: 1.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(circle at top left, rgba(117, 255, 157, 0.12), transparent 32%),
+    linear-gradient(180deg, rgba(39, 39, 39, 0.98), rgba(26, 26, 26, 0.96));
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.smallTitle {
+  display: inline-flex;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #8df0a8;
+}
+
+.mainTitle {
+  margin: 0;
+  line-height: 0.95;
+  color: #f3f3f3;
+}
+
+.progressCard {
+  min-width: 390px;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1.1rem;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+}
+
+.progressHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.metricLabel {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #8c8c8c;
+}
+
+.metricValue {
+  font-size: 1.7rem;
+  color: #f8f8f8;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 0.72rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.progressFill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background-color: #5bc96f;
+}
+
+@media (max-width: 840px) {
+  .progressCard {
+    min-width: none;
+  }
+
+  .header {
+    flex-direction: column;
+  }
+}
