@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev src/index.ts"
+    "dev": "ts-node-dev src/index.ts",
+    "build": "tsc",
+    "postinstall": "prisma generate",
+    "start": "node src/index.js",
+    "deploy": "prisma migrate deploy"
   },
   "keywords": [],
   "author": "",
