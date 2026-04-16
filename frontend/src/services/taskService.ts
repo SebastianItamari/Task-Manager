@@ -1,11 +1,13 @@
 import type { Task } from "../types/Task";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 export function getTasks(): Promise<Response> {
-  return fetch("http://localhost:3000/tasks");
+  return fetch(`${API_URL}/tasks`);
 }
 
 export function addTask(newTask: Task): Promise<Response> {
-  return fetch("http://localhost:3000/tasks", {
+  return fetch(`${API_URL}/tasks`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -15,7 +17,7 @@ export function addTask(newTask: Task): Promise<Response> {
 }
 
 export function updateTask(taskId: number, updatedTask: Task): Promise<Response> {
-  return fetch(`http://localhost:3000/tasks/${taskId}`, {
+  return fetch(`${API_URL}/tasks/${taskId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
@@ -25,7 +27,7 @@ export function updateTask(taskId: number, updatedTask: Task): Promise<Response>
 }
 
 export function deleteTask(taskId: number): Promise<Response> {
-  return fetch(`http://localhost:3000/tasks/${taskId}`, {
+  return fetch(`${API_URL}/tasks/${taskId}`, {
     method: "DELETE"
   });
 }
