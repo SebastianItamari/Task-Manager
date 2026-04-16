@@ -1,5 +1,21 @@
+// Load evironment variables from .env file
+require("dotenv").config();
+
+// Import necessary modules
 const express = require("express");
-const cors = require("cors");
+const cors = require("cors"); // Allow cross-origin requests
+
+// Import Prisma Client and Adapter
+const { PrismaClient } = require("@prisma/client");
+const { PrismaPg } = require("@prisma/adapter-pg");
+
+// Create the adapter using the connection URL
+const adapter = new PrismaPg({
+  connectionString: process.env.DATABASE_URL
+});
+
+// Create a new Prisma Client instance with the adapter
+const prisma = new PrismaClient({ adapter });
 
 const app = express();
 const PORT = 3000;
@@ -10,58 +26,75 @@ app.use(cors());
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-
-// Initial tasks
-let tasks = [
-  { id: 1776128748288, title: "Estudiar Express", completed: false },
-  { id: 1776128748289, title: "Construir backend", completed: true }
-];
-
 app.get("/", (req: any, res: any) => {
   res.send("¡El backend está funcionando!");
 });
 
 // To get all tasks
-app.get("/tasks", (req: any, res: any) => {
-  res.json(tasks);
+app.get("/tasks", async (req: any, res: any) => {
+  try {
+    const tasks = await prisma.task.findMany({
+      orderBy: {
+        id: "asc"
+      }
+    });
+    res.json(tasks);
+  } catch (error) {
+    console.error("Error en GET /tasks:", error);
+    res.status(500).json({ message: "Error al obtener las tareas" });
+  }
 });
 
 // To create a new task
-app.post("/tasks", (req: any, res: any) => {
-  const newTask = {
-    id: req.body.id,
-    title: req.body.title,
-    completed: req.body.completed
-  };
+app.post("/tasks", async (req: any, res: any) => {
+  try {
+    const newTask = await prisma.task.create({
+      data: {
+        title: req.body.title,
+        completed: false
+      }
+    });
 
-  tasks.push(newTask);
-  res.json(newTask);
+    res.json(newTask);
+  } catch (error) {
+    console.error("Error en POST /tasks:", error);
+    res.status(500).json({ message: "Error al crear la tarea" });
+  }
 });
 
 // To update a task
-app.put("/tasks/:id", (req: any, res: any) => {
-  const taskId = Number(req.params.id);
-  const taskIndex = tasks.findIndex((task) => task.id === taskId);
+app.put("/tasks/:id", async (req: any, res: any) => {
+  try {
+    const taskId = Number(req.params.id);
 
-  if (taskIndex === -1) {
-    return res.status(404).json({ message: "Tarea no encontrada" });
+    const updatedTask = await prisma.task.update({
+      where: { id: taskId },
+      data: {
+        completed: req.body.completed
+      }
+    });
+
+    res.json(updatedTask);
+  } catch (error) {
+    console.error("Error en PUT /tasks/:id:", error);
+    res.status(500).json({ message: "Error al actualizar la tarea" });
   }
-
-  tasks[taskIndex] = { ...tasks[taskIndex], ...req.body };
-  res.json(tasks[taskIndex]);
 });
 
 // To delete a task
-app.delete("/tasks/:id", (req: any, res: any) => {
-  const taskId = Number(req.params.id);
-  const task = tasks.find((task) => task.id === taskId);
+app.delete("/tasks/:id", async (req: any, res: any) => {
+  try {
+    const taskId = Number(req.params.id);
 
-  if (!task) {
-    return res.status(404).json({ message: "Tarea no encontrada" });
+    const deletedTask = await prisma.task.delete({
+      where: { id: taskId }
+    });
+
+    res.json({ message: "Tarea eliminada", deletedTask });
+  } catch (error) {
+    console.error("Error en DELETE /tasks/:id:", error);
+    res.status(500).json({ message: "Error al eliminar la tarea" });
   }
-
-  tasks = tasks.filter((task) => task.id !== taskId);
-  res.json({ message: "Tarea eliminada", deletedTask: task });
 });
 
 // Start the server
