@@ -1,23 +1,28 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import styles from "./Login.module.css";
+import Loader from "../components/Loader";
 
 const Login = () => {
   const { handleLogin } = useAuth();
-
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
 
+    setIsLoading(true);
     try {
       await handleLogin(email, password);
       window.location.href = "/";
     } catch (error: any) {
       alert(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
+  
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -28,6 +33,7 @@ const Login = () => {
 
   return (
     <div className={styles.loginContainer}>
+      {isLoading ? <Loader /> : null}
       <div className={styles.loginCard}>
         <span className={styles.subtitle}>TASK MANAGER</span>
         <h2 className={styles.title}>Iniciar sesión</h2>
@@ -52,8 +58,10 @@ const Login = () => {
             Ingresar
           </button>
         </form>
-        <p>
-          ¿No tienes cuenta? <a href="/register">Regístrate</a>
+        <p className={styles.registerText}>
+          ¿No tienes cuenta? <a href="/register" className={styles.link}>
+            Regístrate
+          </a>
         </p>
       </div>
     </div>
