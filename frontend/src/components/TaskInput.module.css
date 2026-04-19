@@ -64,6 +64,7 @@
     flex-direction: column;
   }
 }
+
 .deadline {
   display: block;
   margin-top: 0.4rem;
@@ -78,3 +79,4 @@
 .input {
   flex: 1;
 }
+

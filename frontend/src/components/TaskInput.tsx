@@ -8,6 +8,7 @@ type TaskInputProps = {
 };
 
 function TaskInput({ onAddTask, isLoading }: TaskInputProps) {
+
   const [title, setTitle] = useState("");
   const [deadline, setDeadline] = useState("");
 

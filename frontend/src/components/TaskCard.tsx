@@ -2,6 +2,7 @@ import type { Task } from "../types/Task";
 import styles from "./TaskCard.module.css";
 import { useState } from "react";
 
+
 type TaskCardProps = {
   task: Task;
   onDelete: () => void;
@@ -58,7 +59,6 @@ function TaskCard({
           Eliminar
         </button>
       </div>
-
       {isEditing ? (
         <div className={styles.editContainer}>
           <input
@@ -89,7 +89,6 @@ function TaskCard({
           )}
         </>
       )}
-
       <div className={styles.cardFooter}>
         <label className={styles.toggle}>
           <input
