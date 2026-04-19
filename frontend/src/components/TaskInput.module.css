@@ -30,6 +30,7 @@
   background: rgba(255, 255, 255, 0.03);
   color: #f1f1f1;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  outline: none;
 }
 
 .input::placeholder {
@@ -37,9 +38,8 @@
 }
 
 .input:focus {
-  outline: none;
-  border-color: rgba(141, 240, 168, 0.5);
-  box-shadow: 0 0 0 4px rgba(141, 240, 168, 0.1);
+  border-color: #8df0a8;
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .button {

@@ -75,7 +75,7 @@
   border: none;
   border-radius: 0.9rem;
 
-  background: linear-gradient(135deg, #8df0a8, #57d68d);
+  background: #5bc96f;
   color: #0f0f0f;
   font-weight: 600;
   font-size: 0.95rem;
@@ -86,11 +86,7 @@
 
 .button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(141, 240, 168, 0.25);
-}
-
-.button:active {
-  transform: scale(0.98);
+  box-shadow: 0 14px 28px rgba(91, 201, 111, 0.24);
 }
 
 .error {

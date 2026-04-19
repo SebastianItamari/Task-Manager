@@ -84,7 +84,7 @@ function TaskCard({
               className={styles.deadline}
               style={{ color: isLate ? "red" : "#aaa" }}
             >
-              📅Fecha Limite de Cumplimiento {new Date(task.deadline).toLocaleString()}
+              📅 Fecha Limite de Cumplimiento {new Date(task.deadline).toLocaleString()}
             </span>
           )}
         </>
