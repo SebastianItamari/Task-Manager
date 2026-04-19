@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Task-Manager
-=======
 # Task Manager
 
 This project is a full-stack web application designed to help users organize, track, and manage tasks efficiently. It includes secure user authentication (login and registration) and supports optional deadlines for tasks, allowing flexible scheduling and prioritization.
@@ -159,4 +156,3 @@ Authorization: Bearer <token>
 ## Authors 🧑‍💻
 - [@SebastianItamari](https://github.com/SebastianItamari)
 - [@RuniorElio](https://github.com/RuniorElio)
->>>>>>> c9fe10fe0aecc487ded4409e05a8d8d2c33f2d11

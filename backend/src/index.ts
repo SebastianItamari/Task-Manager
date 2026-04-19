@@ -1,28 +1,7 @@
-<<<<<<< HEAD
-=======
-// Load evironment variables from .env file
-require("dotenv").config();
-
->>>>>>> c9fe10fe0aecc487ded4409e05a8d8d2c33f2d11
 // Import necessary modules
 const express = require("express");
 const cors = require("cors"); // Allow cross-origin requests
 
-<<<<<<< HEAD
-=======
-// Import Prisma Client and Adapter
-const { PrismaClient } = require("@prisma/client");
-const { PrismaPg } = require("@prisma/adapter-pg");
-
-// Create the adapter using the connection URL
-const adapter = new PrismaPg({
-  connectionString: process.env.DATABASE_URL
-});
-
-// Create a new Prisma Client instance with the adapter
-const prisma = new PrismaClient({ adapter });
-
->>>>>>> c9fe10fe0aecc487ded4409e05a8d8d2c33f2d11
 const app = express();
 const PORT = 3000;
 
@@ -36,79 +15,10 @@ app.get("/", (req: any, res: any) => {
   res.send("¡El backend está funcionando!");
 });
 
-<<<<<<< HEAD
 // Integrate routes
 app.use("/tasks", require("./routes/tasks"));
 app.use("/auth", require("./routes/auth"));
 app.use("/test", require("./routes/test"));
-=======
-// To get all tasks
-app.get("/tasks", async (req: any, res: any) => {
-  try {
-    const tasks = await prisma.task.findMany({
-      orderBy: {
-        id: "asc"
-      }
-    });
-    res.json(tasks);
-  } catch (error) {
-    console.error("Error en GET /tasks:", error);
-    res.status(500).json({ message: "Error al obtener las tareas" });
-  }
-});
-
-// To create a new task
-app.post("/tasks", async (req: any, res: any) => {
-  try {
-    const newTask = await prisma.task.create({
-      data: {
-        title: req.body.title,
-        completed: false
-      }
-    });
-
-    res.json(newTask);
-  } catch (error) {
-    console.error("Error en POST /tasks:", error);
-    res.status(500).json({ message: "Error al crear la tarea" });
-  }
-});
-
-// To update a task
-app.put("/tasks/:id", async (req: any, res: any) => {
-  try {
-    const taskId = Number(req.params.id);
-
-    const updatedTask = await prisma.task.update({
-      where: { id: taskId },
-      data: {
-        completed: req.body.completed
-      }
-    });
-
-    res.json(updatedTask);
-  } catch (error) {
-    console.error("Error en PUT /tasks/:id:", error);
-    res.status(500).json({ message: "Error al actualizar la tarea" });
-  }
-});
-
-// To delete a task
-app.delete("/tasks/:id", async (req: any, res: any) => {
-  try {
-    const taskId = Number(req.params.id);
-
-    const deletedTask = await prisma.task.delete({
-      where: { id: taskId }
-    });
-
-    res.json({ message: "Tarea eliminada", deletedTask });
-  } catch (error) {
-    console.error("Error en DELETE /tasks/:id:", error);
-    res.status(500).json({ message: "Error al eliminar la tarea" });
-  }
-});
->>>>>>> c9fe10fe0aecc487ded4409e05a8d8d2c33f2d11
 
 // Start the server
 app.listen(PORT, () => {
