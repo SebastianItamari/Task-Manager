@@ -43,7 +43,7 @@ function TaskCard({
 
         <button
           type="button"
-          className={styles.deleteButton}
+          className={styles.editButton}
           onClick={() => setIsEditing(!isEditing)}
           disabled={isLoading}
         >
@@ -70,8 +70,8 @@ function TaskCard({
               if (e.key === "Escape") setIsEditing(false);
             }}
           />
-          <button onClick={handleSave}>Guardar</button>
-          <button onClick={() => setIsEditing(false)}>Cancelar</button>
+          <button className={styles.editButton} onClick={handleSave}>Guardar</button>
+          <button className={styles.editButton} onClick={() => setIsEditing(false)}>Cancelar</button>
         </div>
       ) : (
         <>

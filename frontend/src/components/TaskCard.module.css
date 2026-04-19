@@ -53,6 +53,21 @@
   background: rgba(255, 159, 132, 0.08);
 }
 
+.editButton {
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.85rem;
+  background: rgba(255, 255, 255, 0.02);
+  color: #d9d9d9;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.editButton:hover {
+  border: 1px solid rgba(255, 255, 255, 0.193);
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .taskText,
 .taskDone {
   margin: 0;
@@ -120,4 +135,24 @@
 .toggleLabel {
   color: #c8c8c8;
   font-size: 0.92rem;
+}
+
+.editContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.input {
+  padding: 0.4rem 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.6rem;
+  background: rgba(255, 255, 255, 0.03);
+  color: #f1f1f1;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  outline: none;
+}
+
+.input:focus {
+  border: 1px solid rgba(255, 255, 255, 0.193);
 }
