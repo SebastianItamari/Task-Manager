@@ -1,0 +1,68 @@
+.app-shell {
+  min-height: 100vh;
+  padding: 2rem 1.25rem;
+}
+
+.app-frame {
+  display: grid;
+  gap: 1.5rem;
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1.75rem;
+  background: rgba(20, 20, 20, 0.72);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+}
+
+.app-content {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    padding: 1rem 0.75rem;
+  }
+
+  .app-frame {
+    padding: 1rem;
+    border-radius: 1.25rem;
+  }
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.search {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+  color: white;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.buttons button {
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.6rem;
+  border: none;
+  cursor: pointer;
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+.buttons button:hover {
+  background: rgba(255,255,255,0.15);
+}

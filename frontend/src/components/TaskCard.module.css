@@ -1,0 +1,123 @@
+.card {
+  display: grid;
+  gap: 1.15rem;
+  padding: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(180deg, rgba(31, 31, 31, 0.96), rgba(24, 24, 24, 0.94)),
+    radial-gradient(circle at bottom right, rgba(255, 153, 102, 0.12), transparent 28%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.statusDone,
+.statusPending {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.statusDone {
+  background: rgba(91, 201, 111, 0.18);
+  color: #9df4b1;
+}
+
+.statusPending {
+  background: rgba(233, 123, 92, 0.18);
+  color: #ff9f84;
+}
+
+.deleteButton {
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.85rem;
+  background: rgba(255, 255, 255, 0.02);
+  color: #d9d9d9;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.deleteButton:hover {
+  border-color: rgba(255, 159, 132, 0.35);
+  color: #ffb09a;
+  background: rgba(255, 159, 132, 0.08);
+}
+
+.taskText,
+.taskDone {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #f0f0f0;
+}
+
+.taskDone {
+  color: #9e9e9e;
+  text-decoration: line-through;
+  text-decoration-color: rgba(141, 240, 168, 0.45);
+}
+
+.cardFooter {
+  margin-top: auto;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.checkmark {
+  position: relative;
+  width: 1.35rem;
+  height: 1.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0.4rem;
+  background: rgba(255, 255, 255, 0.03);
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 0.42rem;
+  height: 0.72rem;
+  border-right: 2px solid #102114;
+  border-bottom: 2px solid #102114;
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.2s ease;
+}
+
+.checkbox:checked + .checkmark {
+  border-color: rgba(141, 240, 168, 0.45);
+  background: linear-gradient(135deg, #5bc96f, #8df0a8);
+  box-shadow: 0 0 0 4px rgba(141, 240, 168, 0.08);
+}
+
+.checkbox:checked + .checkmark::after {
+  transform: rotate(45deg) scale(1);
+}
+
+.toggleLabel {
+  color: #c8c8c8;
+  font-size: 0.92rem;
+}
