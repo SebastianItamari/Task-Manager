@@ -90,7 +90,17 @@ function TaskApp() {
   };
 
   const handleUpdateTask = (id: number, updatedTask: Partial<Task>) => {
-    return updateTask(id, updatedTask).then(fetchTasks);
+    setIsLoading(true);
+
+    return updateTask(id, updatedTask)
+      .then(() => fetchTasks())
+      .catch((error) => {
+        console.error(`Error al actualizar la tarea con id: ${id}`, error);
+        throw error;
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   useEffect(() => {
