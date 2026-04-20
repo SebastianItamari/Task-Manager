@@ -2,6 +2,10 @@
 
 This project is a full-stack web application designed to help users organize, track, and manage tasks efficiently. It includes secure user authentication (login and registration) and supports optional deadlines for tasks, allowing flexible scheduling and prioritization.
 
+<p align="center">
+  <img width="1455" height="906" alt="Task-Manager" src="https://github.com/user-attachments/assets/6c49624f-f2bd-4ab0-8b05-ff2194b833c6" />
+</p>
+
 ## Tech Stack 🛠️
 - **Frontend:** React + TypeScript + Vite
 - **Backend:** Node.js + Express + TypeScript
