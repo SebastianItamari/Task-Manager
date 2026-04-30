@@ -156,3 +156,7 @@ Authorization: Bearer <token>
 5. Add an environment variable:
    - `VITE_API_URL` → URL of your backend deployed on Render (without a trailing slash).
 6. Deploy the project.
+
+## Authors 🧑‍💻
+- [@SebastianItamari](https://github.com/SebastianItamari)
+- [@RuniorElio](https://github.com/RuniorElio)
