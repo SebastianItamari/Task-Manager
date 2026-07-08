@@ -1,9 +1,10 @@
 // Import necessary modules
+require("dotenv/config");
 const express = require("express");
 const cors = require("cors"); // Allow cross-origin requests
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Enable CORS for all routes
 app.use(cors());

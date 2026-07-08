@@ -2,6 +2,8 @@
 
 This project is a full-stack web application designed to help users organize, track, and manage tasks efficiently. It includes secure user authentication (login and registration) and supports optional deadlines for tasks, allowing flexible scheduling and prioritization.
 
+<!-- BADGE_CI -->
+
 <p align="center">
   <img width="1455" height="906" alt="Task-Manager" src="https://github.com/user-attachments/assets/6c49624f-f2bd-4ab0-8b05-ff2194b833c6" />
 </p>
@@ -21,6 +23,12 @@ This project is a full-stack web application designed to help users organize, tr
 
 ## Set Up ⚙️
 
+### Clone the repository
+```bash
+git clone https://github.com/SebastianItamari/Task-Manager.git
+cd Task-Manager
+```
+
 ### Frontend
 1. Move into the frontend folder:
    ```bash
@@ -34,8 +42,9 @@ This project is a full-stack web application designed to help users organize, tr
    ```env
    VITE_API_URL="backend-url"
    ```
-  
-  > ℹ️ *The value “http://localhost:3000” is commonly used.*
+
+   > ℹ️ *`VITE_API_URL` is the base URL of the backend API.*
+   > *For local development, use `http://localhost:3000` (or the `PORT` you will set in the backend `.env`). In production, use the backend URL deployed on Render.*
 
 4. Start the frontend development server:
    ```bash
@@ -55,7 +64,10 @@ This project is a full-stack web application designed to help users organize, tr
    ```env
    DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE_NAME"
    JWT_SECRET="your-secret-key"
+   PORT=
    ```
+
+   > ℹ️ *If `PORT` is left empty, the backend defaults to `3000`.*
 4. Run the database migrations:
    ```bash
    npx prisma migrate dev
@@ -69,6 +81,22 @@ This project is a full-stack web application designed to help users organize, tr
 Use two terminals:
 - Terminal 1: run the backend from `backend/`
 - Terminal 2: run the frontend from `frontend/`
+
+## 📜 Available Commands
+
+### Backend (`backend/`)
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Starts the development server |
+| `npm run build` | Compiles TypeScript to JavaScript (production) |
+| `npm test` | Runs automated tests (pending — Session 3) |
+
+### Frontend (`frontend/`)
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Starts the development server (Vite) |
+| `npm run build` | Generates the production build |
+| `npm test` | Runs automated tests (pending — Session 3) |
 
 ## API Endpoints 🤖
 
@@ -111,6 +139,7 @@ Authorization: Bearer <token>
 }
 ```
 
+<!--
 ## Deployment 🌐
 ### Database – Render
 1. Create an account at [Render](https://render.com/).
@@ -156,6 +185,7 @@ Authorization: Bearer <token>
 5. Add an environment variable:
    - `VITE_API_URL` → URL of your backend deployed on Render (without a trailing slash).
 6. Deploy the project.
+-->
 
 ## Authors 🧑‍💻
 - [@SebastianItamari](https://github.com/SebastianItamari)
