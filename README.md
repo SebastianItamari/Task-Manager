@@ -2,7 +2,7 @@
 
 This project is a full-stack web application designed to help users organize, track, and manage tasks efficiently. It includes secure user authentication (login and registration) and supports optional deadlines for tasks, allowing flexible scheduling and prioritization.
 
-<!-- BADGE_CI -->
+[![CI](https://github.com/SebastianItamari/Task-Manager/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/SebastianItamari/Task-Manager/actions/workflows/ci.yml)
 
 <p align="center">
   <img width="1455" height="906" alt="Task-Manager" src="https://github.com/user-attachments/assets/6c49624f-f2bd-4ab0-8b05-ff2194b833c6" />
