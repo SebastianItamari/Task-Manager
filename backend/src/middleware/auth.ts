@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference -- ambient module, no runtime import possible
+/// <reference path="../types/express.d.ts" />
 import type { NextFunction, Request, Response } from "express";
 
 const jwt = require("jsonwebtoken");
