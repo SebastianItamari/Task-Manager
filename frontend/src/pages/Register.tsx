@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { useAuth } from "../hooks/useAuth";
 import styles from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
@@ -12,14 +12,14 @@ function Register() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const onSubmit = async (e: any) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     try {
       await handleRegister(email, password);
       window.location.href = "/login";
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Error al registrarse");
     } finally {
       setIsLoading(false);
     }

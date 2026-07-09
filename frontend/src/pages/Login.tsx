@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useAuth } from "../hooks/useAuth";
 import styles from "./Login.module.css";
 import Loader from "../components/Loader";
@@ -9,15 +9,15 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onSubmit = async (e: any) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     setIsLoading(true);
     try {
       await handleLogin(email, password);
       window.location.href = "/";
-    } catch (error: any) {
-      alert(error.message);
+    } catch (error) {
+      alert(error instanceof Error ? error.message : "Error al iniciar sesión");
     } finally {
       setIsLoading(false);
     }

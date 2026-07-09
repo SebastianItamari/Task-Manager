@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Header from "../components/Header";
 import TaskList from "../components/TaskList";
 import Footer from "../components/Footer";
@@ -30,7 +30,7 @@ function TaskApp() {
     setTasks(data);
   };
 
-  const loadTasks = async () => {
+  const loadTasks = useCallback(async () => {
     setIsLoading(true);
 
     try {
@@ -40,7 +40,7 @@ function TaskApp() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   const handleAddTask = (newTask: Partial<Task>) => {
     setIsLoading(true);
@@ -116,7 +116,7 @@ function TaskApp() {
     if (token) {
       loadTasks();
     }
-  }, []);
+  }, [loadTasks]);
 
   const filteredTasks = tasks
     .filter((task) => {
