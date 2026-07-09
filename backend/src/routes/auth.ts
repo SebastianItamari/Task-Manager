@@ -1,3 +1,5 @@
+import type { Request, Response } from "express";
+
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -6,7 +8,7 @@ const prisma = require("../lib/prisma");
 require("dotenv/config");
 
 // To create a new user
-router.post("/register", async (req: any, res: any) => {
+router.post("/register", async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
     const existingUser = await prisma.user.findUnique({
@@ -33,7 +35,7 @@ router.post("/register", async (req: any, res: any) => {
 });
 
 // To login a user (get token)
-router.post("/login", async (req: any, res: any) => {
+router.post("/login", async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
     const user = await prisma.user.findUnique({

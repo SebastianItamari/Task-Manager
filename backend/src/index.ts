@@ -1,4 +1,6 @@
 // Import necessary modules
+import type { Request, Response } from "express";
+
 require("dotenv/config");
 const express = require("express");
 const cors = require("cors"); // Allow cross-origin requests
@@ -12,7 +14,7 @@ app.use(cors());
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-app.get("/", (req: any, res: any) => {
+app.get("/", (req: Request, res: Response) => {
   res.send("¡El backend está funcionando!");
 });
 
