@@ -1,3 +1,5 @@
+import type { Request, Response } from "express";
+
 const router = require("express").Router();
 const verifyToken = require("../middleware/auth");
 
@@ -5,7 +7,7 @@ const verifyToken = require("../middleware/auth");
 router.use(verifyToken);
 
 // To test if the token validation works
-router.get("/private", async (req: any, res: any) => {
+router.get("/private", async (req: Request, res: Response) => {
   res.json({ message: "¡Acceso autorizado a la ruta privada!" });
 });
 

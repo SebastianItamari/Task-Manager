@@ -1,16 +1,19 @@
+import type { Request, Response } from "express";
+
 const router = require("express").Router();
 const verifyToken = require("../middleware/auth");
 const prisma = require("../lib/prisma");
+const { Prisma } = require("@prisma/client") as typeof import("@prisma/client");
 
 // To apply middleware to all routes
 router.use(verifyToken);
 
 // To get all tasks
-router.get("/", async (req: any, res: any) => {
+router.get("/", async (req: Request, res: Response) => {
   try {
     const tasks = await prisma.task.findMany({
       orderBy: { id: "asc"},
-      where: { userId: req.user.userId }
+      where: { userId: req.user!.userId }
     });
     res.json(tasks);
   } catch (error) {
@@ -20,14 +23,14 @@ router.get("/", async (req: any, res: any) => {
 });
 
 // To create a new task
-router.post("/", async (req: any, res: any) => {
+router.post("/", async (req: Request, res: Response) => {
   try {
     const newTask = await prisma.task.create({
       data: {
         title: req.body.title,
         completed: false,
         deadline: req.body.deadline ? new Date(req.body.deadline) : null,
-        userId: req.user.userId
+        userId: req.user!.userId
       }
     });
 
@@ -39,7 +42,7 @@ router.post("/", async (req: any, res: any) => {
 });
 
 // To update a task
-router.put("/:id", async (req: any, res: any) => {
+router.put("/:id", async (req: Request, res: Response) => {
   try {
     const taskId = Number(req.params.id);
 
@@ -53,9 +56,9 @@ router.put("/:id", async (req: any, res: any) => {
     });
 
     res.json(updatedTask);
-  } catch (error: any) {
+  } catch (error) {
     // P2025 is the error code for "Record to delete does not exist in Prisma"
-    if (error.code === 'P2025') {
+    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2025") {
       return res.status(404).json({ message: "Tarea no encontrada" });
     }
     console.error("Error en PUT /tasks/:id:", error);
@@ -64,7 +67,7 @@ router.put("/:id", async (req: any, res: any) => {
 });
 
 // To delete a task
-router.delete("/:id", async (req: any, res: any) => {
+router.delete("/:id", async (req: Request, res: Response) => {
   try {
     const taskId = Number(req.params.id);
 
@@ -73,9 +76,9 @@ router.delete("/:id", async (req: any, res: any) => {
     });
 
     res.json({ message: "Tarea eliminada", deletedTask });
-  } catch (error: any) {
+  } catch (error) {
     // P2025 is the error code for "Record to delete does not exist in Prisma"
-    if (error.code === 'P2025') {
+    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2025") {
       return res.status(404).json({ message: "Tarea no encontrada" });
     }
     console.error("Error en DELETE /tasks/:id:", error);

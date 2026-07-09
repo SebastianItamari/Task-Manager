@@ -1,8 +1,10 @@
+import type { NextFunction, Request, Response } from "express";
+
 const jwt = require("jsonwebtoken");
 
 require("dotenv/config");
 
-const verifyToken = (req:any, res: any, next: any) => {
+const verifyToken = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers["authorization"];
   const token = authHeader?.split(" ")[1];
 
@@ -11,9 +13,9 @@ const verifyToken = (req:any, res: any, next: any) => {
   }
 
   try {
-    req.user = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = jwt.verify(token, process.env.JWT_SECRET as string) as { userId: number };
     next();
-  } catch (error) {
+  } catch {
     return res.status(401).json({ message: "Token inválido" });
   }
 };
