@@ -4,6 +4,7 @@ import styles from "./Login.module.css";
 import Loader from "../components/Loader";
 
 const Login = () => {
+  const user = null;
   const { handleLogin } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
