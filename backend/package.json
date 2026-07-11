@@ -6,6 +6,7 @@
     "dev": "ts-node-dev src/index.ts",
     "build": "tsc",
     "lint": "eslint .",
+    "test": "vitest run",
     "postinstall": "prisma generate",
     "start": "node src/index.js",
     "deploy": "prisma migrate deploy"
@@ -30,11 +31,15 @@
     "@eslint/js": "^10.0.1",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.6.0",
+    "@types/supertest": "^7.2.0",
     "eslint": "^10.6.0",
     "globals": "^17.7.0",
+    "supertest": "^7.2.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^6.0.2",
-    "typescript-eslint": "^8.63.0"
+    "typescript-eslint": "^8.63.0",
+    "vitest": "^4.1.10"
   }
 }

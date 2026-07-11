@@ -1,6 +1,7 @@
 import type { Task } from "../types/Task";
 import styles from "./TaskCard.module.css";
 import { useState } from "react";
+import { isTaskLate } from "../utils/taskUtils";
 
 
 type TaskCardProps = {
@@ -30,7 +31,7 @@ function TaskCard({
 
     setIsEditing(false);
   };
-  const isLate = task.deadline && new Date(task.deadline) < new Date();
+  const isLate = isTaskLate(task.deadline);
 
   return (
     <li className={styles.card}>

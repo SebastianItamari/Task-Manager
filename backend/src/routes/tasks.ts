@@ -27,6 +27,10 @@ router.get("/", async (req: Request, res: Response) => {
 // To create a new task
 router.post("/", async (req: Request, res: Response) => {
   try {
+    if (!req.body.title || !req.body.title.trim()) {
+      return res.status(400).json({ message: "El título es obligatorio" });
+    }
+
     const newTask = await prisma.task.create({
       data: {
         title: req.body.title,
