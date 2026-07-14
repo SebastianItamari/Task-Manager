@@ -30,5 +30,6 @@ test('A user can log in, create a task, and view it in the list', async ({ page 
   await page.getByRole('button', { name: 'Agregar tarea' }).click()
 
   // 5. Check that the new task is visible in the list
-  await expect(page.getByText(taskTitle)).toBeVisible()
+  //await expect(page.getByText(taskTitle)).toBeVisible()
+  await expect(page.getByText("wrong case")).toBeVisible()
 })
