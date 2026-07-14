@@ -1,0 +1,24 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "This project is a full-stack web application designed to help users organize, track, and manage tasks efficiently. It includes secure user authentication (login and registration) and supports optional deadlines for tasks, allowing flexible scheduling and prioritization.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SebastianItamari/Task-Manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/SebastianItamari/Task-Manager/issues"
+  },
+  "homepage": "https://github.com/SebastianItamari/Task-Manager#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.1",
+    "@vitest/coverage-v8": "^4.1.10"
+  }
+}
