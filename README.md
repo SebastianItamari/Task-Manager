@@ -82,6 +82,58 @@ Use two terminals:
 - Terminal 1: run the backend from `backend/`
 - Terminal 2: run the frontend from `frontend/`
 
+## Run with Docker 🐳
+
+Instead of setting up Node, npm and PostgreSQL manually, you can run the whole stack (frontend, backend and database) with a single command using Docker Compose.
+
+### Prerequisites
+- Docker and Docker Compose installed.
+
+### 1. Configure environment variables
+Copy the template and fill in the values:
+```bash
+cp .env.example .env
+```
+
+`.env.example` (at the project root) documents every variable `docker-compose.yml` needs. The real `.env` is git-ignored — it ends up holding real credentials, even if only for local development.
+
+| Variable | Used for | Suggested default |
+| --- | --- | --- |
+| `POSTGRES_USER` | Database user | `appuser` |
+| `POSTGRES_PASSWORD` | Database password | — |
+| `POSTGRES_DB` | Database name | `appdb` |
+| `JWT_SECRET` | Secret used by the backend to sign session tokens | — |
+| `BACKEND_PORT` | Host port the backend is published on | `3000` |
+| `FRONTEND_PORT` | Host port the frontend is published on | `5173` |
+| `POSTGRES_PORT` | Host port Postgres is published on | `5432` |
+
+The last three are optional — if you don't set them, `docker-compose.yml` falls back to those same defaults. Only override them if something else on your machine is already using that port (e.g. a local Postgres install on `5432`).
+
+### 2. Start everything
+```bash
+docker compose up --build
+```
+
+This builds the `frontend` and `backend` images, starts Postgres, waits for it to be healthy, applies Prisma migrations automatically, and starts the backend and frontend.
+
+- Frontend: `http://localhost:<FRONTEND_PORT>` (default `5173`)
+- Backend: `http://localhost:<BACKEND_PORT>` (default `3000`)
+
+Add `-d` to run it in the background:
+```bash
+docker compose up --build -d
+```
+
+### 3. Stop everything
+```bash
+docker compose down
+```
+
+Postgres data persists across restarts in a named volume (`postgres_data`). To reset the database from scratch:
+```bash
+docker compose down -v
+```
+
 ## 📜 Available Commands
 
 ### Backend (`backend/`)
