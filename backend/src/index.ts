@@ -1,6 +1,8 @@
 // Import necessary modules
 import type { Request, Response } from "express";
 
+const apiKey = 'sk_test_FALSO123456789'  //// TODO: mover a variable de entorno
+
 require("dotenv/config");
 const express = require("express");
 const cors = require("cors"); // Allow cross-origin requests
