@@ -104,3 +104,31 @@ jobs:
         working-directory: ./backend
       - run: npx playwright install --with-deps chromium
       - run: npx playwright test
+
+  deploy-staging-backend:
+    name: Deploy Backend to Staging
+    needs: [frontend, backend, tests, e2e]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Railway CLI
+        run: npm install -g @railway/cli
+      - name: Deploy backend
+        run: railway up --service Task-Manager-Backend --environment staging
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
+  deploy-staging-frontend:
+    name: Deploy Frontend to Staging
+    needs: [frontend, backend, tests, e2e]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Railway CLI
+        run: npm install -g @railway/cli
+      - name: Deploy frontend
+        run: railway up --service Task-Manager-Frontend --environment staging
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
