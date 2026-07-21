@@ -149,7 +149,7 @@ jobs:
       - name: Deploy backend
         run: railway up --service Task-Manager-Backend --environment production
         env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN_PRODUCTION }}
 
   deploy-production-frontend:
     name: Deploy Frontend to Production (manual)
@@ -162,4 +162,4 @@ jobs:
       - name: Deploy frontend
         run: railway up --service Task-Manager-Frontend --environment production
         env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN_PRODUCTION }}
