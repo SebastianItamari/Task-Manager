@@ -27,8 +27,6 @@ app.use("/tasks", require("./routes/tasks"));
 app.use("/auth", require("./routes/auth"));
 app.use("/test", require("./routes/test"));
 
-throw new Error('fallo simulado');
-
 // Start the server
 app.listen(PORT, () => {
   console.log(`El servidor está corriendo en el puerto ${PORT}`);

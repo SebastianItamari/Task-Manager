@@ -112,7 +112,7 @@ jobs:
 
   deploy-staging-backend:
     name: Deploy Backend to Staging
-    #needs: [frontend, backend, tests, e2e]
+    needs: [frontend, backend, tests, e2e]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
@@ -126,7 +126,7 @@ jobs:
 
   deploy-staging-frontend:
     name: Deploy Frontend to Staging
-    #needs: [frontend, backend, tests, e2e]
+    needs: [frontend, backend, tests, e2e]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
