@@ -29,7 +29,7 @@ function Register() {
     <div className={styles.loginContainer}>
       {isLoading ? <Loader /> : null}
       <div className={styles.loginCard}>
-        <span className={styles.subtitle}>TASK MANAGER UCB</span>
+        <span className={styles.subtitle}>TASK MANAGER</span>
         <h2 className={styles.title}>Crear cuenta</h2>
 
         <form className={styles.form} onSubmit={onSubmit}>

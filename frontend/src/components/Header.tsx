@@ -17,7 +17,7 @@ function Header({ tasks, onLogout }: HeaderProps) {
   return (
     <header className={styles.header}>
   <div className={styles.titleBlock}>
-    <span className={styles.smallTitle}>TASK MANAGER UCB</span>
+    <span className={styles.smallTitle}>TASK MANAGER</span>
     <h1 className={styles.mainTitle}>Lista de tareas</h1>
   </div>
 

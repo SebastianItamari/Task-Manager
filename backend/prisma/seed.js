@@ -18,16 +18,19 @@ async function main() {
     },
   });
 
-  await prisma.task.upsert({
-    where: { id: 1 },
-    update: {},
-    create: {
-      id: 1,
-      title: "Tarea de ejemplo para pruebas",
-      completed: false,
-      userId: user.id,
-    },
+  const existingTask = await prisma.task.findFirst({
+    where: { userId: user.id, title: "Tarea de ejemplo para pruebas" },
   });
+
+  if (!existingTask) {
+    await prisma.task.create({
+      data: {
+        title: "Tarea de ejemplo para pruebas",
+        completed: false,
+        userId: user.id,
+      },
+    });
+  }
 }
 
 main()
